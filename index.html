@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AetherDesk — Ambient Focus OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="top">
+    <div class="brand">
+      <span class="mark"></span>
+      <div>
+        <strong>AetherDesk</strong>
+        <small>ambient focus os</small>
+      </div>
+    </div>
+    <div class="clock-block">
+      <div class="clock" id="clock">15:43</div>
+      <div class="date" id="date">вторник, 10 ноября</div>
+    </div>
+    <div class="top-right">
+      <button class="ghost" id="sceneBtn">Сцена: Deep Work</button>
+      <button class="primary" id="startFocus">Старт фокуса</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="focus card">
+      <p class="label">Focus ring</p>
+      <div class="timer-wrap">
+        <svg viewBox="0 0 220 220" class="timer-ring">
+          <circle cx="110" cy="110" r="96" class="bg" />
+          <circle cx="110" cy="110" r="96" class="fg" id="timerArc" />
+        </svg>
+        <div class="timer-center">
+          <div class="time" id="timer">25:00</div>
+          <div class="phase" id="phase">Deep work</div>
+        </div>
+      </div>
+      <div class="timer-actions">
+        <button id="pauseBtn">Пауза</button>
+        <button id="resetBtn">Сброс</button>
+        <button id="breakBtn">Перерыв 5</button>
+      </div>
+      <div class="sessions">
+        <span>Сессии сегодня</span>
+        <div class="dots" id="sessionDots"></div>
+      </div>
+    </section>
+
+    <section class="board card">
+      <div class="board-head">
+        <div>
+          <p class="label">Spatial notes</p>
+          <h2>Доска внимания</h2>
+        </div>
+        <button class="ghost" id="addNote">＋ Заметка</button>
+      </div>
+      <div class="canvas" id="noteCanvas"></div>
+    </section>
+
+    <section class="stack">
+      <article class="card tasks">
+        <div class="board-head">
+          <div>
+            <p class="label">Now</p>
+            <h2>Поток задач</h2>
+          </div>
+          <button class="ghost" id="addTask">＋</button>
+        </div>
+        <ul id="taskList"></ul>
+      </article>
+
+      <article class="card soundscape">
+        <p class="label">Soundscape</p>
+        <h2 id="soundTitle">Rain on glass</h2>
+        <div class="sound-controls">
+          <button class="sound active" data-sound="rain">Дождь</button>
+          <button class="sound" data-sound="cafe">Кафе</button>
+          <button class="sound" data-sound="forest">Лес</button>
+          <button class="sound" data-sound="fire">Очаг</button>
+        </div>
+        <div class="eq" id="eq"></div>
+        <input type="range" id="volume" min="0" max="100" value="45" />
+      </article>
+
+      <article class="card ritual">
+        <p class="label">Daily ritual</p>
+        <h2>Ритуал дня</h2>
+        <ol id="ritual"></ol>
+      </article>
+    </section>
+  </main>
+
+  <footer class="dock">
+    <button data-scene="deep">Deep Work</button>
+    <button data-scene="create">Create</button>
+    <button data-scene="recover">Recover</button>
+    <button data-scene="plan">Plan</button>
+  </footer>
+
+  <div class="toast" id="toast" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>
